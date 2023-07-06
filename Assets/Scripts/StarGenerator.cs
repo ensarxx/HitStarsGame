@@ -76,15 +76,15 @@ public class StarGenerator : MonoBehaviour
             remainingTime -= Time.deltaTime;
         }
 
-        scoretext.text = score.ToString();
-        timertext.text = remainingTime.ToString();
-        if (false)// dead // remainingTime < 0 olacak // deðþtirildi
+        scoretext.text = "Score: " + score.ToString() + "";
+        timertext.text = "Time Remaining: " + ((int)PlayerPrefs.GetFloat("remainingtime")).ToString() + "";
+        if (remainingTime <= 0)// dead // remainingTime < 0 olacak // deðþtirildi
         {
             isCounting = false;
             timertext.text = "";
             Time.timeScale = 0;
             deadPanel.SetActive(true);
-            yourScoreText.text = "Your Score: "+score.ToString()+"";
+            yourScoreText.text = "Score: "+score.ToString()+"";
             
         }
 
@@ -99,7 +99,8 @@ public class StarGenerator : MonoBehaviour
 
         }
 
-
+        PlayerPrefs.SetFloat("remainingtime", remainingTime);
+           
 
     }
 
@@ -107,12 +108,9 @@ public class StarGenerator : MonoBehaviour
 
     public void replayScene()
     {
-        // SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene");
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "OnlineScene")
-        {
-            SceneManager.LoadScene("OnlineScene");
-        }
+        
     }
 }

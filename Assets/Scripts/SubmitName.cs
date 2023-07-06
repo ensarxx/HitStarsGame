@@ -13,13 +13,17 @@ public class SubmitName : MonoBehaviour
 
    public void submit()
     {
-        playerName = nameInput.text;
-        PlayerPrefs.SetString("name", playerName);
+
+        if (nameInput.text.Length <= 17)
+        {
+            playerName = nameInput.text;
+            PlayerPrefs.SetString("name", playerName);
+        }
         
         
     }
     void Update()
     {
-        nameText.text = PlayerPrefs.GetString("name");
+        nameText.text = "Username: " + PlayerPrefs.GetString("name") + "";
     }
 }

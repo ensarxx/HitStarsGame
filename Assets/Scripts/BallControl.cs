@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+
 
 public class BallControl : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class BallControl : MonoBehaviour
     public LineRenderer lr;
 
     [SerializeField] private Rigidbody2D rb; // new
-    [SerializeField] private PhotonView view; // new
+    
 
 
 
@@ -32,7 +32,7 @@ public class BallControl : MonoBehaviour
         
 
 
-            if (Input.touchCount > 0 && PlayerPrefs.GetInt("atishakki") == 1 && view.IsMine)
+            if (Input.touchCount > 0 && PlayerPrefs.GetInt("atishakki") == 1)
 
             {
 
